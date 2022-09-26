@@ -1,13 +1,19 @@
 import Head from "next/head";
+import SideBar from "../components/SideBar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-black h-screen overflow-hidden">
       <Head>
         <title>Spotify 2.0</title>
       </Head>
 
-      <h1 className="text-green-400 text-5xl">Spotify 2.0</h1>
+      <main>
+        <SideBar />
+        {/* Center */}
+
+        <div>{/* Audio Player */}</div>
+      </main>
     </div>
   );
 }
