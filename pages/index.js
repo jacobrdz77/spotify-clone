@@ -1,6 +1,8 @@
+import { unstable_getServerSession } from "next-auth";
 import Head from "next/head";
 import Center from "../components/Center";
 import SideBar from "../components/SideBar";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Home() {
   return (
@@ -12,9 +14,23 @@ export default function Home() {
       <main className="flex">
         <SideBar />
         <Center />
-
         <div>{/* Audio Player */}</div>
       </main>
     </div>
   );
+}
+
+//! Not working
+export async function getServerSideProps(context) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
+
+  return {
+    props: {
+      session,
+    },
+  };
 }
