@@ -39,6 +39,7 @@ export const authOptions = {
     signIn: "/login",
   },
   callbacks: {
+    // The jwt callback is called first before the session callback.
     async jwt({ token, account, user }) {
       // initial signin
       if (account && user) {
@@ -53,6 +54,7 @@ export const authOptions = {
 
       // Return the previous token if the access token has not expired yet
       if (Date.now() < token.accessTokenExpires) {
+        console.log("EXISTING TOKEN IS VALID!");
         return token;
       }
 
@@ -65,7 +67,6 @@ export const authOptions = {
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.username = token.username;
-
       return session;
     },
   },
