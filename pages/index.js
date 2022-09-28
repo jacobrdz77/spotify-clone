@@ -1,6 +1,7 @@
 import { unstable_getServerSession } from "next-auth";
 import Head from "next/head";
 import Center from "../components/Center";
+import Player from "../components/Player";
 import SideBar from "../components/SideBar";
 import { authOptions } from "./api/auth/[...nextauth]";
 
@@ -14,7 +15,6 @@ export default function Home() {
       <main className="flex">
         <SideBar />
         <Center />
-        <div>{/* Audio Player */}</div>
       </main>
     </div>
   );
